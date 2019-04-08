@@ -9,7 +9,10 @@ const initial_state = {
 }
 
 export default (state = initial_state,action) => {
+    console.log('additem reducer fire')
+    console.log(action)
     switch(action.type){
+        
         case ADDITEM:
         return{
             items:action.payload
