@@ -5,7 +5,7 @@ import { Provider } from 'react-redux';
 import {ADDITEM,TOGGLESTATUS} from '../actions';
 
 const initial_state = {
-    items:[{value:'Add item with button',completed:false}]
+    items:[{value:'Add item with button',completed:false,key:0}]
 }
 
 export default (state = initial_state,action) => {
@@ -18,7 +18,7 @@ export default (state = initial_state,action) => {
         case ADDITEM:
         return{
             items: [...state.items,
-            pl]
+            {value:pl.value,completed:false,key:Math.random()}]
             
         }
     

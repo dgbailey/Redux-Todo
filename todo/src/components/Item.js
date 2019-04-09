@@ -17,9 +17,10 @@ const StrikeWrap = styled.div`
 export const Item = (props)=>{
 
     const toggledStatus = (item)=> {
-       let itemId = item.completed;
+       let itemKey = item.key;
         props.togglestatus(
-            props.items.map(arritem => itemId === true ? {...arritem,completed:false}:{...arritem,completed:true})
+            props.items.map(arritem => (arritem.completed && arritem.key === itemKey ) 
+            ? {...arritem,completed:!(arritem.completed)}:{...arritem,completed:!(arritem.completed)})
         )
         console.log('fire toggle')
         

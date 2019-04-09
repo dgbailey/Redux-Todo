@@ -14,14 +14,20 @@ class Todo extends Component{
         console.log(e)
         let update = {value:e.target.value,completed:false}
         this.setState({ newitem: update });
+
         
         
     };
+
+    componentWillUpdate(newState){
+        console.log('newstate',newState)
+    }
 
     updateTodo = e => {
         e.preventDefault();
 
         this.props.additem(this.state.newitem);
+        this.setState({newitem:''});
         
     };
 
@@ -33,7 +39,7 @@ class Todo extends Component{
                 <h1>Redux: Todo</h1>
                 <div className='display-container'>
                 <div className='background'></div>
-                {this.props.items.map(todo => <Item key={Math.random()} id={Math.random()} togglestatus={this.props.togglestatus} item={todo} items={this.props.items}/>)}
+                {this.props.items.map(todo => <Item key={Math.random()} togglestatus={this.props.togglestatus} item={todo} items={this.state.myTodos}/>)}
                 </div>
                 <div className='input container'>
                     <form onSubmit={() => this.updateTodo} className='todo-form'>
