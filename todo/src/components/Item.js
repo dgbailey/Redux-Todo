@@ -1,6 +1,6 @@
 import  React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {additem,toggleitem} from '../actions';
+import {additem,togglestatus} from '../actions';
 import styled, { css } from 'styled-components';
 
 const StrikeWrap = styled.div`
@@ -9,19 +9,28 @@ const StrikeWrap = styled.div`
     border-radius:5px;
     &:hover{
         cursor:pointer;
-        
+
     }
 
 `
 
 export const Item = (props)=>{
 
-    let strikeWrapProp = props.item.completed ? null:'strike';
-    
-        return(
-        <StrikeWrap strike={`${props.item.completed ? 'strike':null}`}>
-            <h2 className='task-name'>{props.item.value}</h2>
-        </StrikeWrap>
+    const toggledStatus = (item)=> {
+       let itemId = item.completed;
+        props.togglestatus(
+            props.items.map(arritem => itemId === true ? {...arritem,completed:false}:{...arritem,completed:true})
         )
+        console.log('fire toggle')
+        
+    }
+        
+    
+    
+    return(
+    <StrikeWrap  onClick={()=>toggledStatus(props.item)} strike={`${props.item.completed ? 'strike':null}`}>
+        <h2 className='task-name'>{props.item.value}</h2>
+    </StrikeWrap>
+    )
     
 }

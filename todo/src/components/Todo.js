@@ -1,6 +1,6 @@
 import  React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {additem,toggleitem} from '../actions';
+import {additem,togglestatus} from '../actions';
 import {Item} from './Item';
 
 
@@ -33,7 +33,7 @@ class Todo extends Component{
                 <h1>Redux: Todo</h1>
                 <div className='display-container'>
                 <div className='background'></div>
-                {this.props.items.map(todo => <Item item={todo}/>)}
+                {this.props.items.map(todo => <Item key={Math.random()} id={Math.random()} togglestatus={this.props.togglestatus} item={todo} items={this.props.items}/>)}
                 </div>
                 <div className='input container'>
                     <form onSubmit={() => this.updateTodo} className='todo-form'>
@@ -59,4 +59,4 @@ const mapStateToProps = (state) =>{
     }
 }
 //connecting component to redux state tree and actions via this.props
-export default connect(mapStateToProps,{additem,toggleitem})(Todo)
+export default connect(mapStateToProps,{additem,togglestatus})(Todo)

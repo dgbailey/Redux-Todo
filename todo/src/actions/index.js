@@ -1,5 +1,5 @@
 export const ADDITEM = 'ADDITEM';
-export const TOGGLE = 'TOGGLE';
+export const TOGGLESTATUS = 'TOGGLE';
 
 // Our action creators will return
 // an action packet that our reducer will
@@ -19,11 +19,12 @@ export const additem = (formitems) => {
   // Fill in this function
 };
 
-export const toggleitem = (selecteditems) => {
+export const togglestatus = (selecteditem) => {
   
   // Fill in this function
   return{
-  type: TOGGLE,
-   payload: selecteditems
+  type: TOGGLESTATUS,
+   payload: selecteditem
+   
   }
 };
