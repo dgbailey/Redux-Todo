@@ -5,12 +5,14 @@ import {Item} from './Item';
 
 class Todo extends Component{
     state = {
-        myTodos:[this.props.items]
+        myTodos:[this.props.items],
+        newitem:''
     }
 
     handleChanges = e => {
-        let update = this.state.myTodos.push({value:e.target.value,completed:false})
-        this.setState({ myTodos: update });
+        console.log(e)
+        let update = {value:e.target.value,completed:false}
+        this.setState({ newitem: update });
         
         
     };
@@ -18,8 +20,8 @@ class Todo extends Component{
     updateTodo = e => {
         e.preventDefault();
 
-        this.props.additem(this.state.myTodos);
-        console.log(this.state.myTodos)
+        this.props.additem(this.state.newitem);
+        
     };
 
 
@@ -34,7 +36,7 @@ class Todo extends Component{
                 </div>
                 <div className='input container'>
                     <form onSubmit={() => this.updateTodo} className='todo-form'>
-                        <input onChange={()=>this.handleChanges} className='todo-input'></input>
+                        <input onChange={this.handleChanges} className='todo-input'></input>
                         <button onClick={this.updateTodo}>Add</button>
                     </form>
 

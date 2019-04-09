@@ -10,12 +10,15 @@ const initial_state = {
 
 export default (state = initial_state,action) => {
     console.log('additem reducer fire')
-    console.log(action)
+    let pl = action.payload;
+    console.log(pl,'payload')
     switch(action.type){
         
         case ADDITEM:
         return{
-            items:action.payload
+            items: [...state.items,
+            pl]
+            
         }
     
         case TOGGLE:
