@@ -1,5 +1,6 @@
 export const ADDITEM = 'ADDITEM';
 export const TOGGLESTATUS = 'TOGGLE';
+export const CLEARCOMPLETE = 'CLEARCOMPLETE';
 
 // Our action creators will return
 // an action packet that our reducer will
@@ -24,6 +25,16 @@ export const togglestatus = (selecteditem) => {
   // Fill in this function
   return{
   type: TOGGLESTATUS,
+   payload: selecteditem
+   
+  }
+};
+
+export const clearComplete = (selecteditem) => {
+  
+  // Fill in this function
+  return{
+  type: CLEARCOMPLETE,
    payload: selecteditem
    
   }

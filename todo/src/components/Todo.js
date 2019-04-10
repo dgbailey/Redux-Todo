@@ -1,6 +1,6 @@
 import  React, { Component } from 'react';
 import { connect } from 'react-redux';
-import {additem,togglestatus} from '../actions';
+import {additem,togglestatus,clearComplete} from '../actions';
 import {Item} from './Item';
 
 
@@ -35,6 +35,11 @@ class Todo extends Component{
         
     };
 
+    clearComplete = e =>{
+        e.preventDefault();
+        this.props.clearComplete(this.state.myTodos)
+    }
+
 
 
     render(){
@@ -49,6 +54,7 @@ class Todo extends Component{
                     <form onSubmit={() => this.updateTodo} className='todo-form'>
                         <input onChange={this.handleChanges} placeholder='Add item...' value={this.state.newitem} className='todo-input'></input>
                         <button onClick={this.updateTodo}>Add</button>
+                        <button onClick={this.clearComplete} >Clear Complete</button>
                     </form>
 
                 
@@ -69,4 +75,4 @@ const mapStateToProps = (state) =>{
     }
 }
 //connecting component to redux state tree and actions via this.props
-export default connect(mapStateToProps,{additem,togglestatus})(Todo)
+export default connect(mapStateToProps,{additem,togglestatus,clearComplete})(Todo)
